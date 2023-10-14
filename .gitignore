@@ -6,3 +6,9 @@
 /MyWeb/.vs/MyWeb/config
 /MyWeb/.vs/MyWeb/v17/.suo
 /MyWeb/.vs/MyWeb/DesignTimeBuild
+/MyWeb/MyController/bin/Debug/net6.0
+/MyWeb/MyController/obj/MyController.csproj.nuget.dgspec.json
+/MyWeb/MyController/obj/MyController.csproj.nuget.g.props
+/MyWeb/MyController/obj/project.assets.json
+/MyWeb/MyController/obj/project.nuget.cache
+*.user
