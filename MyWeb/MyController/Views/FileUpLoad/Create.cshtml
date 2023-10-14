@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" enctype="multipart/form-data">
+    <p>照片:<input type="file" name="photo" /></p>
+    <p><input type="submit" name="新增商品" /></p>
+</form>
+
+<br />
+@ViewData["Msg"]
