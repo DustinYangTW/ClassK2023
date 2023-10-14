@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace MyController.Controllers
 {
@@ -45,6 +46,20 @@ namespace MyController.Controllers
                 ViewData["Msg"] = $"{Count}筆上傳成功";
                 return View();
             }
+            return View();
+        }
+
+        public IActionResult ShowPhote()
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Photos");
+            DirectoryInfo photoInfo = new DirectoryInfo(path);
+            FileInfo[] files = photoInfo.GetFiles();
+            string result = string.Empty;
+            foreach (FileInfo file in files)
+            {
+                result += $"<img src='../Photos/{file.Name}' width='200' calss='img-thumbnail'/>";
+            }
+            ViewData["Show"] = result;
             return View();
         }
     }
