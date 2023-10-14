@@ -24,5 +24,25 @@ namespace MyController.Controllers
             ViewData["Show"] = $"{product.ID}, {product.Name}, {product.Price}";
             return View();
         }
+
+        /// <summary>
+        /// 使用HttpGet
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Create2()
+        {
+            return View(new Product());
+        }
+        /// <summary>
+        /// 使用HttpPost
+        /// 必須要是Post的請求，才會走這個方法
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Create2(Product product)
+        {
+            ViewData["Show"] = $"{product.ID}, {product.Name}, {product.Price}";
+            return View();
+        }
     }
 }
