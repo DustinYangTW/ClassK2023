@@ -1,0 +1,18 @@
+﻿@model MyController.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h1>新版(Tag Helper) 複雜細節法</h1>
+<br />
+<form asp-action="Create">
+    <p>商品ID:<input type="text" asp-for="@Model.ID" placeholder="輸入商品ID" /></p>
+    <p>商品名字:<input type="text" asp-for="@Model.Name" placeholder="輸入商品名字" /></p>
+    <p>商品價格:<input type="text" asp-for="@Model.Price" placeholder="輸入商品價格" /></p>
+    <p><input type="submit" name="新增商品" /></p>
+</form>
+<br />
+@ViewData["Show"]
