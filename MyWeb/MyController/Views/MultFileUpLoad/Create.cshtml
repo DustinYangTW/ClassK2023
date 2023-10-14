@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" enctype="multipart/form-data">
+    <p>照片:</p>
+    <p id="fileArea">
+
+    </p>
+    <input type="button" value="增加一個檔案" onclick="addFileUpLoad()" />
+    <p><input type="submit" name="新增商品" /></p>
+</form>
+
+<br />
+@ViewData["Msg"]
+
+<script>
+    var fileArea = document.getElementById("fileArea");
+    const addFileUpLoad = () => {
+        debugger;
+        let input = document.createElement("input");
+        input.type = "file";
+        input.name = "Photos";
+        input.className = "for-control"
+        fileArea.appendChild(input);
+    }
+</script>
+
+
