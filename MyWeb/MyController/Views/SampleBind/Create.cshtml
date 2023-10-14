@@ -4,13 +4,23 @@
 }
 
 <h1>Create</h1>
-
+<br />
+<h1>舊版(Html Helper)</h1>
 <form action="../SampleBind/Create" method="post">
-    <p>商品ID:<input type="text" name="ID" placeholder="輸入商品ID" /></p>
-    <p>商品名字:<input type="text" name="Name" placeholder="輸入商品名字" /></p>
-    <p>商品價格:<input type="text" name="Price" placeholder="輸入商品價格" /></p>
+    <p>商品ID:<input type="text" name="ID" id="ID" placeholder="輸入商品ID" /></p>
+    <p>商品名字:<input type="text" name="Name" id="Name" placeholder="輸入商品名字" /></p>
+    <p>商品價格:<input type="text" name="Price" id="Price" placeholder="輸入商品價格" /></p>
     <p><input type="submit" name="新增商品" /></p>
 </form>
+@* <br />  
+<h1>新版(Tag Helper)</h1>
 <br />  
+<form asp-action="Create">
+    <p>商品ID:<input type="text" asp-for="ID" placeholder="輸入商品ID" /></p>
+    <p>商品名字:<input type="text" asp-for="Name" placeholder="輸入商品名字" /></p>
+    <p>商品價格:<input type="text" asp-for="Price" placeholder="輸入商品價格" /></p>
+    <p><input type="submit" name="新增商品" /></p>
+</form> *@
+<br />
 @ViewData["Show"]
 
