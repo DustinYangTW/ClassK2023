@@ -13,6 +13,38 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\1.JPG",
+      "PackagePath": "staticwebassets\\images\\1.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\2.JPG",
+      "PackagePath": "staticwebassets\\images\\2.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\3.JPG",
+      "PackagePath": "staticwebassets\\images\\3.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\4.JPG",
+      "PackagePath": "staticwebassets\\images\\4.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\5.JPG",
+      "PackagePath": "staticwebassets\\images\\5.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\6.JPG",
+      "PackagePath": "staticwebassets\\images\\6.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\7.JPG",
+      "PackagePath": "staticwebassets\\images\\7.JPG"
+    },
+    {
+      "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\images\\8.JPG",
+      "PackagePath": "staticwebassets\\images\\8.JPG"
+    },
+    {
       "Id": "F:\\DustinYang\\MyWeb\\MyController\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

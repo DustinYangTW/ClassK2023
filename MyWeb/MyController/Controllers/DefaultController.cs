@@ -23,5 +23,20 @@ namespace MyController.Controllers
             ViewData["Show"] = show;
             return View();
         }
+        public IActionResult ShowImage()
+        {
+            for(int i = 1; i < 9; i++)
+            {
+                ViewData["Show"] += $"<a href='/Default/ShowImageIndex?i={i}'><img src='../images/{i}.jpg' width='200' calss='img-thumbnail'/></a>";
+            }
+
+            return View();
+        }
+
+        public IActionResult ShowImageIndex(int i)
+        {
+            ViewData["Show"] += $"<img src='../images/{i}.jpg' width='200' calss='img-thumbnail'/>";
+            return View();
+        }
     }
 }

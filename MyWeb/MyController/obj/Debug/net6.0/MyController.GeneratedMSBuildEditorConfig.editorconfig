@@ -24,6 +24,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFxTaG93QXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/DustinYang/MyWeb/MyController/Views/Default/ShowImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFxTaG93SW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/DustinYang/MyWeb/MyController/Views/Default/ShowImageIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVmYXVsdFxTaG93SW1hZ2VJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/DustinYang/MyWeb/MyController/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
