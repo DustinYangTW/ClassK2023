@@ -36,3 +36,4 @@
 /MyWeb/MyController/obj/Debug/net6.0/staticwebassets.build.json
 /MyWeb/MyController/obj/Debug/net6.0/staticwebassets.development.json
 /MyWeb/MyController/obj/Debug/net6.0/staticwebassets.pack.json
+*.bin
