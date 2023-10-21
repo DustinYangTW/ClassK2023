@@ -56,10 +56,16 @@
                     <a href="https://www.google.com.tw/maps/search/@item.Address" target="_blank" class="btn btn-light">看地圖</a>
                 </td>
                 <td>
-                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ },new{@class="btn btn-light}"}) |
-                    @Html.ActionLink("詳細資料", "Details", new { /* id=item.PrimaryKey */ }) |
-                    <a href="@Url.Action("Details")">詳細資料</a> |
+                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ },new{@class="btn btn-warning"})
+
+                    <a href="/Home/Display/@item.Id">詳細資料</a> |
+                    <a href="@Url.Action("Display")">詳細資料</a>
+                    @Html.ActionLink("詳細資料", "Display", new { id=item.Id },new{@class="btn btn-info"})
+                    <a asp-action="Display" asp-route-id="@item.Id" class="btn btn-info">詳細資料</a>
+                    
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+                    <a asp-action="Delete" class="btn btn-danger">刪除</a>
                 </td>
             </tr>
         }

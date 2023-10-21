@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyView.Models;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace MyView.Controllers
@@ -47,12 +46,25 @@ namespace MyView.Controllers
             return View(nightMarkets);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Display(string id)
+        {
+
+            // select * from NightMarket where id='A01'
+
+            List<NightMarket> nm = Get_NightMarkets_Datas();
+
+            //Linq Extension
+            var result = nm.Where(m => m.Id == id).FirstOrDefault();
+
+            return View(result);
+        }
+
+
+        public IActionResult Razor()
         {
             return View();
         }
-
-        public IActionResult Razor()
+        public IActionResult Privacy()
         {
             return View();
         }
