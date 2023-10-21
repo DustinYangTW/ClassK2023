@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyView.Models;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace MyView.Controllers
@@ -12,18 +13,12 @@ namespace MyView.Controllers
         {
             _logger = logger;
         }
-        /// <summary>
-        /// 可以當成模型來做處理，這種通常都稱為DataModel
-        /// 會有一些規則可以做資料驗證
-        /// </summary>
-        public class NightMarket
-        {
-            public string? Id { get; set; }
-            public string? Name { get; set; }
-            public string? Address { get; set; }
-        }
 
-        public IActionResult Index()
+        /// <summary>
+        /// 需要把運算邏輯抽離Controller，這樣才能把邏輯分離開來(Action 主要任務只有判斷)，不能處理太多事情
+        /// </summary>
+        /// <returns></returns>
+        private List<NightMarket> Get_NightMarkets_Datas()
         {
             string[] id = { "A01", "A02", "A03", "A04", "A05", "A06", "A07" };
 
@@ -43,7 +38,12 @@ namespace MyView.Controllers
                     Address = address[i]
                 });
             }
+            return nightMarkets;
+        }
 
+        public IActionResult Index()
+        {
+            List<NightMarket> nightMarkets = Get_NightMarkets_Datas();
             return View(nightMarkets);
         }
 
