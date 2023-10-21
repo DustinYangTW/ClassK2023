@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<MyView.Models.NightMarket>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "觀光夜市";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1 class="alert alert-info text-center">@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">新增夜市資料</a>
 </p>
 <table class="table">
     <thead>
@@ -25,28 +25,43 @@
                 @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
+                照片
+            </th>
+            <th>
+                Google地址
+            </th>
+            <th>
                 <label>資料管理</label>
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @* Razor語法前面要加小老鼠 *@
+                    <img src="~/images/@(item.Id).jpg" width="150">
+                </td>
+                <td>
+                    <a href="https://www.google.com.tw/maps/search/@item.Address" target="_blank" class="btn btn-light">看地圖</a>
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ },new{@class="btn btn-light}"}) |
+                    @Html.ActionLink("詳細資料", "Details", new { /* id=item.PrimaryKey */ }) |
+                    <a href="@Url.Action("Details")">詳細資料</a> |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
