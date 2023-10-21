@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Razor練習";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@* 在 @{} 內可以做資料處理*@
+@{
+    //@加入: 代表
+    @:這就是字串
+}
+
+@{
+    string name = "John";
+    var name2 = "";
+    int Math = 85, Eng = 90, Chi = 95;
+
+    bool flag = true;
+
+    @:My name is @name
+
+    <h2>My name is @name</h2>
+    <span>My name is @name</span>
+}
+
+<h2>My name is @name</h2>
+
+<h1>@(Math + Eng + Chi)</h1>
+
+<h1>@Math+Eng+Chi</h1>
+
+<h1>@Math+@Eng+@Chi=@(Math + Eng + Chi)</h1>
+
+
+<h2>歡迎@name光臨</h2>
+
+<h2>歡迎 @name 光臨</h2>
+
+<h2>歡迎@(name)光臨</h2>
+<hr />
