@@ -60,6 +60,11 @@ namespace MyView.Controllers
         }
 
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         public IActionResult Razor()
         {
             return View();
