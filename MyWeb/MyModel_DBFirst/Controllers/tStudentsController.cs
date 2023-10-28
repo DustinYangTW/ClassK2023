@@ -11,14 +11,14 @@ namespace MyModel_DBFirst.Controllers
 {
     public class tStudentsController : Controller
     {
-        //private readonly dbStudentsContext _context;
+        private readonly dbStudentsContext _context;
 
-        //public tStudentsController(dbStudentsContext context)
-        //{
-        //    _context = context;
-        //}
+        public tStudentsController(dbStudentsContext context)
+        {
+            _context = context;
+        }
 
-        dbStudentsContext _context=new dbStudentsContext();
+        //dbStudentsContext _context=new dbStudentsContext();
 
         // GET: tStudents
         public async Task<IActionResult> Index()

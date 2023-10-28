@@ -6,19 +6,21 @@ namespace MyModel_DBFirst.Models;
 
 public partial class dbStudentsContext : DbContext
 {
-    //public dbStudentsContext(DbContextOptions<dbStudentsContext> options)
-    //    : base(options)
-    //{
-    //}
+    //6.1.3 將步驟1.2.4在dbStudentsContext中所寫的空建構子註解掉(也可留著只是用不到)
+    public dbStudentsContext(DbContextOptions<dbStudentsContext> options)
+        : base(options)
+    {
+    }
 
-    //1.2.4 在dbStudentsContext.cs裡撰寫一個空的建構子
-    public dbStudentsContext()
-    { }
+    //6.1.2 將步驟1.2.3在dbStudentsContext中所寫的連線字串註解掉
+    ////1.2.4 在dbStudentsContext.cs裡撰寫一個空的建構子
+    //public dbStudentsContext()
+    //{ }
 
-
-    //1.2.3 在dbStudentsContext.cs裡撰寫連線到資料庫的程式
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Data Source=TEACHER;Database=dbStudents;Trusted_Connection=True;TrustServerCertificate=True;User ID=abc;Password=123");
+    //6.1.2 將步驟1.2.3在dbStudentsContext中所寫的連線字串註解掉
+    ////1.2.3 在dbStudentsContext.cs裡撰寫連線到資料庫的程式
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //        => optionsBuilder.UseSqlServer("Data Source=C501A118;Database=dbStudents;Trusted_Connection=True;TrustServerCertificate=True;User ID=C501A118/user;Password=");
 
     public virtual DbSet<tStudent> tStudent { get; set; }
 

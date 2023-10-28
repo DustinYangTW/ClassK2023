@@ -8,8 +8,14 @@ namespace MyModel_DBFirst.Controllers
 {
     public class MyStudentsController : Controller
     {
+        private readonly dbStudentsContext db;
+
+        public MyStudentsController(dbStudentsContext context)
+        {
+            db = context;
+        }
         //4.1.4 撰寫建立DbContext物件的程式
-        dbStudentsContext db = new dbStudentsContext();
+        //dbStudentsContext db = new dbStudentsContext();
 
 
         public IActionResult Index(string deptid="01")
