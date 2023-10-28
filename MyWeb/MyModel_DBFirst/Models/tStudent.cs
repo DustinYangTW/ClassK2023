@@ -9,7 +9,7 @@ public partial class tStudent
     [Display(Name ="學號")]
     [Key]
     [Required(ErrorMessage ="必填")]
-    [RegularExpression("112[0-9][3]",ErrorMessage ="學號格式不正確")]
+    [RegularExpression("112[0-9]{3}",ErrorMessage ="學號格式不正確")]
     public string fStuId { get; set; }
 
     [Display(Name = "學生姓名")]
