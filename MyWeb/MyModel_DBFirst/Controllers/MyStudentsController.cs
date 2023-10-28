@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyModel_DBFirst.Models;
 
@@ -31,6 +32,9 @@ namespace MyModel_DBFirst.Controllers
         public IActionResult Create()
         {
             ViewData["Today"] = DateTime.Now;
+
+            //5.5.3 修改Create Action
+            ViewData["Department"] = new SelectList(db.Department,"DeptID","DeptName");
 
             return View();
         }
@@ -72,7 +76,7 @@ namespace MyModel_DBFirst.Controllers
                 return NotFound();
             }
 
-
+            ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
             return View(tStudent);
         }
 
@@ -90,7 +94,7 @@ namespace MyModel_DBFirst.Controllers
             {
                 db.Update(tStudent);
                 db.SaveChanges();
-
+                ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
                 return RedirectToAction("Index");
             }
 
