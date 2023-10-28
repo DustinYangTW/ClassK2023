@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyModel_DBFirst", "MyModel_DBFirst\MyModel_DBFirst.csproj", "{03179637-8C88-4319-8B1A-649BC4D25171}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyModel_CodeFirst", "MyModel_CodeFirst\MyModel_CodeFirst.csproj", "{71EFAD81-A2F4-4843-8A22-8D2F64BFDFDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{03179637-8C88-4319-8B1A-649BC4D25171}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03179637-8C88-4319-8B1A-649BC4D25171}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03179637-8C88-4319-8B1A-649BC4D25171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71EFAD81-A2F4-4843-8A22-8D2F64BFDFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71EFAD81-A2F4-4843-8A22-8D2F64BFDFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71EFAD81-A2F4-4843-8A22-8D2F64BFDFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71EFAD81-A2F4-4843-8A22-8D2F64BFDFDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
