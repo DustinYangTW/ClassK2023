@@ -43,6 +43,14 @@ namespace MyModel_DBFirst.Controllers
         [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
         public IActionResult Create(tStudent tStudent)
         {
+
+            //檢查學號有沒有重複
+            if(db.tStudent.Any(x => x.fStuId == tStudent.fStuId))
+            {
+                ViewData["ErrorMsg"] = "學號重複";
+                return View(tStudent);
+            }
+
             if (ModelState.IsValid)
             {
                 db.Add(tStudent);
