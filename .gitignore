@@ -99,3 +99,5 @@
 /MyWeb/MyModel_DBFirst/obj/MyModel_DBFirst.csproj.nuget.g.props
 /MyWeb/MyWeb/obj/Debug/net6.0/MyWeb.assets.cache
 /MyWeb/MyWeb/obj/MyWeb.csproj.nuget.g.props
+/MyWeb/MyModel_DBFirst/obj/Debug/net6.0/staticwebassets/msbuild.MyModel_DBFirst.Microsoft.AspNetCore.StaticWebAssets.props
+/MyWeb/MyModel_DBFirst/bin/Debug/net6.0/MyModel_DBFirst.deps.json
