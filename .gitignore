@@ -90,3 +90,4 @@
 /MyWeb/MyModel_DBFirst/bin/Debug/net6.0/MyModel_DBFirst.pdb
 /MyWeb/MyModel_DBFirst/bin/Debug/net6.0/MyModel_DBFirst.staticwebassets.runtime.json
 *.BuildWithSkipAnalyzers
+/MyWeb/MyController/obj/Debug/net6.0/apphost.exe
