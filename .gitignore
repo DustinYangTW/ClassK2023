@@ -61,3 +61,9 @@
 /MyWeb/MyView/obj/project.assets.json
 /MyWeb/MyView/obj/project.nuget.cache
 /MyWeb/MyView/obj/Debug/net6.0/MyView.GeneratedMSBuildEditorConfig.editorconfig
+/MyWeb/MyController/obj/MyController.csproj.nuget.dgspec.json
+/MyWeb/MyController/obj/project.assets.json
+/MyWeb/MyController/obj/project.nuget.cache
+/MyWeb/MyWeb/obj/MyWeb.csproj.nuget.dgspec.json
+/MyWeb/MyWeb/obj/project.assets.json
+/MyWeb/MyWeb/obj/project.nuget.cache
