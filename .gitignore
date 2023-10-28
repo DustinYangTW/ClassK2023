@@ -104,3 +104,7 @@
 /MyWeb/MyController/obj/Debug/net6.0/MyController.csproj.FileListAbsolute.txt
 /MyWeb/MyController/obj/Debug/net6.0/MyController.genruntimeconfig.cache
 /MyWeb/MyController/obj/Debug/net6.0/scopedcss/bundle/MyController.styles.css
+/MyWeb/MyModel_CodeFirst/bin/Debug/net6.0/MyModel_CodeFirst.dll
+/MyWeb/MyModel_CodeFirst/bin/Debug/net6.0/MyModel_CodeFirst.pdb
+/MyWeb/MyModel_CodeFirst/obj/Debug/net6.0/MyModel_CodeFirst.dll
+/MyWeb/MyModel_CodeFirst/obj/Debug/net6.0/MyModel_CodeFirst.pdb
