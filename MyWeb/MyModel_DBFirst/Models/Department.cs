@@ -16,7 +16,7 @@ namespace MyModel_DBFirst.Models
         [StringLength(30, ErrorMessage = "科系名稱最多30個字")]
         public string DeptName { get; set; }
 
-        //1對多的關聯
+        //建立與tStudent的關聯
         public List<tStudent> tStudents { get; set; }
     }
 }

@@ -34,19 +34,22 @@ namespace MyModel_DBFirst.Controllers
                 student=db.tStudent.Where(s=>s.DeptID== deptid).ToList()
             };
 
-
+            ViewData["DeptID"] = deptid;
+            ViewData["DeptName"] = db.Department.Find(deptid).DeptName;
 
             return View(result);
         }
 
 
         //4.3.1 撰寫Create Action程式碼(需有兩個Create Action)
-        public IActionResult Create()
+        public IActionResult Create(string deptid)
         {
             ViewData["Today"] = DateTime.Now;
 
             //5.5.3 修改 Create Action
             ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
+            
+            ViewData["DeptID"] = deptid;
 
             return View();
         }
@@ -71,7 +74,7 @@ namespace MyModel_DBFirst.Controllers
                 db.Add(tStudent);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { deptid= tStudent .DeptID});
             }
 
             return View(tStudent);
@@ -120,7 +123,7 @@ namespace MyModel_DBFirst.Controllers
                 db.Update(tStudent);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { deptid = tStudent.DeptID });
             }
 
             return View(tStudent);
@@ -143,7 +146,7 @@ namespace MyModel_DBFirst.Controllers
             db.Remove(tStudent);
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { deptid = tStudent.DeptID });
 
         }
 

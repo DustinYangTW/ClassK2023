@@ -18,9 +18,11 @@ public partial class dbStudentsContext : DbContext
 
     //1.2.3 在dbStudentsContext.cs裡撰寫連線到資料庫的程式
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Data Source=C501A118;Database=dbStudents;Trusted_Connection=True;TrustServerCertificate=True;User ID=C501A118/user;Password=*");
+            => optionsBuilder.UseSqlServer("Data Source=TEACHER;Database=dbStudents;Trusted_Connection=True;TrustServerCertificate=True;User ID=abc;Password=123");
 
     public virtual DbSet<tStudent> tStudent { get; set; }
+
+    //5.2.4 在dbStudentsContext中加入Department的DbSet
     public virtual DbSet<Department> Department { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
