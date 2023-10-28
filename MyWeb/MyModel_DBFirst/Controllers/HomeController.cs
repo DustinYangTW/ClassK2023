@@ -90,3 +90,22 @@ namespace MyModel_DBFirst.Controllers
 //    _context = context;
 //}
 
+//2.3   執行Index View進行CRUD功能測試
+
+//※補充說明※
+//使用Scaffold方法讓Visual Studio自動建立出的tStudentController，預設會使用「依賴注入(Dependency Injection)」的寫法
+//不過一開始我們先不使用依賴注入的寫法，因此我們需修改如1.2.4及2.2等步驟的程式碼後才能正常執行
+
+///////////////////////////////////////////////////////
+/////3. 撰寫模型內容
+
+//3.1 打開tStudent.cs檔案
+//3.2 撰寫在View上顯示的欄位內容
+//3.3 撰寫在表單上的欄位驗證規則(需using System.ComponentModel.DataAnnotations)
+//    常用的驗證器 Required、StringLength、RegularExpression、Compare、EmailAddress、Range、DataType
+//    Required:必填欄位
+//    StringLength:資料字數
+//    RegularExpression:資料格式
+//    Compare:與其它欄位比較是否相等
+//    EmailAddress:是否是E - mail格式
+//    Range: 限制所填的範圍
