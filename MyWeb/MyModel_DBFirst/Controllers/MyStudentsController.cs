@@ -28,7 +28,7 @@ namespace MyModel_DBFirst.Controllers
         //4.3.1 撰寫Create Action程式碼(需有兩個Create Action)
         public IActionResult Create()
         {
-            ViewData["Today"]=DateTime.Now;
+            ViewData["Today"] = DateTime.Now;
 
             return View();
         }
@@ -37,7 +37,7 @@ namespace MyModel_DBFirst.Controllers
         [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
         public IActionResult Create(tStudent tStudent)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 db.Add(tStudent);
                 db.SaveChanges();
@@ -58,14 +58,14 @@ namespace MyModel_DBFirst.Controllers
                 return NotFound();
             }
 
-            
+
 
             //seelct * from tStudent where fStuId=@id
             //var tStudent = db.tStudent.Where(s=>s.fStuId==id).FirstOrDefault();
 
             var tStudent = db.tStudent.Find(id);
 
-            if(tStudent == null)
+            if (tStudent == null)
             {
                 return NotFound();
             }
@@ -76,7 +76,7 @@ namespace MyModel_DBFirst.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
-        public IActionResult Edit(tStudent tStudent,string id)
+        public IActionResult Edit(tStudent tStudent, string id)
         {
             if (id != tStudent.fStuId)
             {
@@ -93,6 +93,26 @@ namespace MyModel_DBFirst.Controllers
             }
 
             return View(tStudent);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
+        public IActionResult Delete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            //seelct * from tStudent where fStuId=@id
+            //var tStudent = db.tStudent.Where(s=>s.fStuId==id).FirstOrDefault();
+
+            var tStudent = db.tStudent.Find(id);
+
+            db.Remove(tStudent);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
     }

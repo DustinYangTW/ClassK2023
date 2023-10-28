@@ -28,26 +28,32 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.fStuId)
                 </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fScore)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.fStuId" class="btn btn-info">修改</a>
-             @*    <a asp-action="Details" asp-route-id="@item.fStuId" class="btn btn-warning">詳細資料</a> *@
-                <a asp-action="Delete" asp-route-id="@item.fStuId" class="btn btn-danger">刪除</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.fName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fScore)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.fStuId" class="btn btn-info">修改</a>
+                    @*    <a asp-action="Details" asp-route-id="@item.fStuId" class="btn btn-warning">詳細資料</a> *@
+                    @*  <a asp-action="Delete" asp-route-id="@item.fStuId" class="btn btn-danger">刪除</a> *@
+
+                    <form asp-action="Delete">
+                        <input type="hidden" value="@item.fStuId" name="id" id="id">
+                        <input type="submit" value="刪除" class="btn btn-danger" onclick="return confirm('確定刪除【@(item.fName)】此筆資料嗎?')">
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
