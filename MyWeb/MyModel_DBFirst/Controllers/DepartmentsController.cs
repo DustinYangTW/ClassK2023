@@ -17,8 +17,8 @@ namespace MyModel_DBFirst.Controllers
         //{
         //    _context = context;
         //}
-
-        dbStudentsContext _context = new dbStudentsContext();
+        //5.6.4 參考2.2.1修改建立DbContext物件的程式
+        dbStudentsContext _context=new dbStudentsContext();
 
         // GET: Departments
         public async Task<IActionResult> Index()

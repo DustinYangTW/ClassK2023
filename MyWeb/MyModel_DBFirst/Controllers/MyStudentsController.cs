@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyModel_DBFirst.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using MyModel_DBFirst.ViewModels;
 
 namespace MyModel_DBFirst.Controllers
 {
@@ -11,7 +12,7 @@ namespace MyModel_DBFirst.Controllers
         dbStudentsContext db = new dbStudentsContext();
 
 
-        public IActionResult Index()
+        public IActionResult Index(string deptid="01")
         {
             //4.2.1 撰寫Index Action程式碼
             //SQL
@@ -21,8 +22,19 @@ namespace MyModel_DBFirst.Controllers
             //var result = from s in db.tStudent
             //             select s;
 
+            //5.5.1 修改 Index Action
             //var result = db.tStudent.ToList();
-            var result = db.tStudent.Include(s => s.Department);
+            //var result = db.tStudent.Include(s=>s.Department);
+
+
+            //5.8.4 修改MyStudnetsController裡的Index Action
+            VMtStudent result = new VMtStudent()
+            {
+                department=db.Department.ToList(),
+                student=db.tStudent.Where(s=>s.DeptID== deptid).ToList()
+            };
+
+
 
             return View(result);
         }
@@ -33,8 +45,8 @@ namespace MyModel_DBFirst.Controllers
         {
             ViewData["Today"] = DateTime.Now;
 
-            //5.5.3 修改Create Action
-            ViewData["Department"] = new SelectList(db.Department,"DeptID","DeptName");
+            //5.5.3 修改 Create Action
+            ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
 
             return View();
         }
@@ -44,10 +56,13 @@ namespace MyModel_DBFirst.Controllers
         public IActionResult Create(tStudent tStudent)
         {
 
-            //檢查學號有沒有重複
-            if(db.tStudent.Any(x => x.fStuId == tStudent.fStuId))
+            //檢查學號(PK)有沒有重複
+            //select * from tStudent where fStuId=@tStudent.fStuId
+
+            var result = db.tStudent.Find(tStudent.fStuId);
+            if (result != null)
             {
-                ViewData["ErrorMsg"] = "學號重複";
+                ViewData["ErrMsg"] = "學號重複";
                 return View(tStudent);
             }
 
@@ -63,7 +78,7 @@ namespace MyModel_DBFirst.Controllers
         }
 
 
-
+        //4.4.1 撰寫Edit Action程式碼(需有兩個Edit Action)
         public IActionResult Edit(string id)
         {
 
@@ -84,12 +99,14 @@ namespace MyModel_DBFirst.Controllers
                 return NotFound();
             }
 
+            //5.5.5 修改 Edit Action
             ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
+
             return View(tStudent);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(tStudent tStudent, string id)
         {
             if (id != tStudent.fStuId)
@@ -102,32 +119,34 @@ namespace MyModel_DBFirst.Controllers
             {
                 db.Update(tStudent);
                 db.SaveChanges();
-                ViewData["Department"] = new SelectList(db.Department, "DeptID", "DeptName");
+
                 return RedirectToAction("Index");
             }
 
             return View(tStudent);
         }
 
+        //4.5.1 撰寫Delete Action程式碼
         [HttpPost]
-        [ValidateAntiForgeryToken] //4.3.6 加入Token驗證標籤
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(string id)
         {
+           
             if (id == null)
             {
                 return NotFound();
             }
 
-            //seelct * from tStudent where fStuId=@id
-            //var tStudent = db.tStudent.Where(s=>s.fStuId==id).FirstOrDefault();
-
             var tStudent = db.tStudent.Find(id);
+
 
             db.Remove(tStudent);
             db.SaveChanges();
 
             return RedirectToAction("Index");
+
         }
+
 
     }
 }

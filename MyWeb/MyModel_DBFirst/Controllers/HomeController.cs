@@ -262,3 +262,48 @@ namespace MyModel_DBFirst.Controllers
 //      按下「新增」鈕
 //5.6.4 參考2.2.1修改建立DbContext物件的程式
 //5.6.5 測試
+
+//5.7   編輯Layout選單，加入「科系管理」及「學生資料管理」
+
+
+//5.8   使用者介面的運用技巧-View Model
+//5.8.1 建立ViewModels資料夾(專案上按右鍵→加入→新增資料夾)
+//5.8.2 在ViewModels資料夾新增VMtStudent類別(右鍵→加入→類別→輸入VMtStudent.cs→按下「新增」鈕)做為Model(這個Model只給View排版用因此稱作ViewModel)
+//5.8.3 撰寫VMtStudent類別
+//5.8.4 修改MyStudnetsController裡的Index Action
+//5.8.5 修改Index View的排版方式
+//5.8.6 測試
+//※補充說明※
+//View Model指的是專為View設計的Model，主要用於View的呈現或驗證規則(商業邏輯)
+
+//5.9   網頁的狀態保留
+//※說明:目前執行完新增或修改功能，導回Index Action時皆會呈現「資工系」的學生資料※
+//※這是因為Index Action若沒給參數則會預設使用deptid="01"的資料，造成流程上的小問題※
+//※因此需要修改Create、Edit與Delete的Action及View進行參數傳遞，以保留住網頁原本的狀態※
+//5.9.1 修改Index View上Create的超鏈結進行參數傳遞
+//5.9.2 修改Get Create Action進行參數傳遞
+//5.9.3 修改Post Create Action進行參數傳遞
+//5.9.4 修改Post Edit Action進行參數傳遞
+//5.9.5 修改Post Delete Action進行參數傳遞
+//5.9.6 測試
+
+
+//6.將取得資料改為依賴注入(Dependency Injection)的寫法
+
+//6.1   資料庫連線字串的改寫
+//      ※目前我們將資料庫的連線字串寫在DbContext的類別檔(dbStudentsContext.cs)中，這是一種不安全的寫法※
+//6.1.1 將連線字串寫在appsettings.json檔中
+//6.1.2 將步驟1.2.3在dbStudentsContext中所寫的連線字串註解掉
+//6.1.3 將步驟1.2.4在dbStudentsContext中所寫的空建構子註解掉(也可留著只是用不到)
+//6.1.4 在Program.cs加入使用appsettings.json中的連線字串程式碼(這段必須寫法var builder這行後面)
+
+//6.2   修正tStudentsController建立DbContext物件的寫法
+//6.2.1 將步驟2.2.1所寫的建立DbContext物件的程式註解
+//6.2.2 將步驟2.2.2所註解掉的程式取消註解(這裡的寫法是scaffold預設的依賴注入寫法)
+//6.2.3 參照tStudentsController，修改MyStudentsController中建立DbContext物件的程式為依賴注入寫法
+
+//※補充說明※
+//依賴注入(Dependency Injection)是物件導向程式設計撰寫時的一種技巧
+//其利用控制反轉(IoC)的概念，將new主動建立物建的寫法反轉為被動地接受物件
+//物件的生命週期控制權則在DI Container手上而不是使用物件的程式
+//這個寫法的優點是解除物件之間的耦合，有利於程式維護、單元測試等

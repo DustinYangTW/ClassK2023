@@ -18,7 +18,7 @@ namespace MyModel_DBFirst.Controllers
         //    _context = context;
         //}
 
-        dbStudentsContext _context = new dbStudentsContext();
+        dbStudentsContext _context=new dbStudentsContext();
 
         // GET: tStudents
         public async Task<IActionResult> Index()
