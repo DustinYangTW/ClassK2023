@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyModel_DBFirst.Models;
 
@@ -24,4 +25,10 @@ public partial class tStudent
     [Display(Name = "成績")]
     [Range(0,100,ErrorMessage ="請填0~100的數字")]
     public int? fScore { get; set; }
+
+    [Display(Name = "科系")]
+    [ForeignKey("Department")]//把DeptID建立成FK
+    public string DeptID { get; set; }
+    //建立與Department的關聯
+    public virtual Department Department { get; set; }
 }

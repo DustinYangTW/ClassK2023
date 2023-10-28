@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyModel_DBFirst.Models;
 
 namespace MyModel_DBFirst.Controllers
@@ -19,7 +20,8 @@ namespace MyModel_DBFirst.Controllers
             //var result = from s in db.tStudent
             //             select s;
 
-            var result = db.tStudent.ToList();
+            //var result = db.tStudent.ToList();
+            var result = db.tStudent.Include(s => s.Department);
 
             return View(result);
         }

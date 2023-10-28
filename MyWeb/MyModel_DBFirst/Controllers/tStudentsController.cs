@@ -9,11 +9,8 @@ using MyModel_DBFirst.Models;
 
 namespace MyModel_DBFirst.Controllers
 {
-
     public class tStudentsController : Controller
     {
-        //2.2.2 將原先既有的程式碼註解掉
-        //原來它給你的是依賴注入的寫法
         //private readonly dbStudentsContext _context;
 
         //public tStudentsController(dbStudentsContext context)
@@ -21,14 +18,13 @@ namespace MyModel_DBFirst.Controllers
         //    _context = context;
         //}
 
-        //2.2.1 撰寫建立DbContext物件的程式
         dbStudentsContext _context = new dbStudentsContext();
-
 
         // GET: tStudents
         public async Task<IActionResult> Index()
         {
-              return View(await _context.tStudent.ToListAsync());
+            var dbStudentsContext = _context.tStudent.Include(t => t.Department);
+            return View(await dbStudentsContext.ToListAsync());
         }
 
         // GET: tStudents/Details/5
@@ -40,6 +36,7 @@ namespace MyModel_DBFirst.Controllers
             }
 
             var tStudent = await _context.tStudent
+                .Include(t => t.Department)
                 .FirstOrDefaultAsync(m => m.fStuId == id);
             if (tStudent == null)
             {
@@ -52,6 +49,7 @@ namespace MyModel_DBFirst.Controllers
         // GET: tStudents/Create
         public IActionResult Create()
         {
+            ViewData["DeptID"] = new SelectList(_context.Department, "DeptID", "DeptID");
             return View();
         }
 
@@ -60,7 +58,7 @@ namespace MyModel_DBFirst.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("fStuId,fName,fEmail,fScore")] tStudent tStudent)
+        public async Task<IActionResult> Create([Bind("fStuId,fName,fEmail,fScore,DeptID")] tStudent tStudent)
         {
             if (ModelState.IsValid)
             {
@@ -68,6 +66,7 @@ namespace MyModel_DBFirst.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DeptID"] = new SelectList(_context.Department, "DeptID", "DeptID", tStudent.DeptID);
             return View(tStudent);
         }
 
@@ -84,6 +83,7 @@ namespace MyModel_DBFirst.Controllers
             {
                 return NotFound();
             }
+            ViewData["DeptID"] = new SelectList(_context.Department, "DeptID", "DeptID", tStudent.DeptID);
             return View(tStudent);
         }
 
@@ -92,7 +92,7 @@ namespace MyModel_DBFirst.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("fStuId,fName,fEmail,fScore")] tStudent tStudent)
+        public async Task<IActionResult> Edit(string id, [Bind("fStuId,fName,fEmail,fScore,DeptID")] tStudent tStudent)
         {
             if (id != tStudent.fStuId)
             {
@@ -119,6 +119,7 @@ namespace MyModel_DBFirst.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DeptID"] = new SelectList(_context.Department, "DeptID", "DeptID", tStudent.DeptID);
             return View(tStudent);
         }
 
@@ -131,6 +132,7 @@ namespace MyModel_DBFirst.Controllers
             }
 
             var tStudent = await _context.tStudent
+                .Include(t => t.Department)
                 .FirstOrDefaultAsync(m => m.fStuId == id);
             if (tStudent == null)
             {

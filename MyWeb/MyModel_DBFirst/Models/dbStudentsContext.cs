@@ -21,6 +21,7 @@ public partial class dbStudentsContext : DbContext
             => optionsBuilder.UseSqlServer("Data Source=C501A118;Database=dbStudents;Trusted_Connection=True;TrustServerCertificate=True;User ID=C501A118/user;Password=*");
 
     public virtual DbSet<tStudent> tStudent { get; set; }
+    public virtual DbSet<Department> Department { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
