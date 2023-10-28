@@ -1,0 +1,60 @@
+﻿@model MyView.Models.NightMarket
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NightMarket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+
+                <input asp-for="Id" class="form-control" placeholder="ex:M32" />
+               @*  <input name="Id" id="Id" type="text" class="form-control"  /> *@
+
+           @*    <span class="text-danger field-validation-valid" data-valmsg-for="Id" data-valmsg-replace="true"></span> *@
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="最多30字" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" placeholder="最多50字" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="確定新增" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+
+@if (ViewData["Show"]!=null)
+{
+    @Html.Raw(ViewData["Show"])
+}
+else
+{
+    <h1>目前沒有資料</h1>
+}
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+}

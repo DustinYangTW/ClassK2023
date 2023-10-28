@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@* <form method="post" action="/SimpleBind/Create">
+    <p>ID:<input type="text" name="ID" id="ID" /></p>
+    <p>Name:<input type="text" name="Name" id="Name" /></p>
+    <p>Price:<input type="text" name="Price" id="Price" /></p>
+    <p><input type="submit" value="新增商品" /></p>
+</form> *@
+
+<form asp-action="Create">
+    <p>ID:<input type="text" name="ID" id="ID" /></p>
+    <p>Name:<input type="text" name="Name" id="Name" /></p>
+    <p>Price:<input type="text" name="Price" id="Price" /></p>
+    <p><input type="submit" value="新增商品" /></p>
+</form>
+<hr />
+@ViewData["Show"]
