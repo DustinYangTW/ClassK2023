@@ -91,3 +91,11 @@
 /MyWeb/MyModel_DBFirst/bin/Debug/net6.0/MyModel_DBFirst.staticwebassets.runtime.json
 *.BuildWithSkipAnalyzers
 /MyWeb/MyController/obj/Debug/net6.0/apphost.exe
+/MyWeb/.vs/MyWeb/FileContentIndex/6bfd86b1-5dd1-410a-9ea2-12d82430b22a.vsidx
+/MyWeb/MyController/obj/Debug/net6.0/MyController.assets.cache
+/MyWeb/MyController/obj/Debug/net6.0/MyController.csproj.AssemblyReference.cache
+/MyWeb/MyController/obj/MyController.csproj.nuget.g.props
+/MyWeb/MyController/obj/MyController.csproj.nuget.g.targets
+/MyWeb/MyModel_DBFirst/obj/MyModel_DBFirst.csproj.nuget.g.props
+/MyWeb/MyWeb/obj/Debug/net6.0/MyWeb.assets.cache
+/MyWeb/MyWeb/obj/MyWeb.csproj.nuget.g.props
