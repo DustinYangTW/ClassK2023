@@ -1,54 +1,35 @@
 ﻿@model MyModel_CodeFirst.Models.Book
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
 }
+@*修改Display View 排版樣式，排版可以個人喜好呈現*@
+<h1>@ViewData["Title"]</h1>
 
-<h1>Details</h1>
+<div class="card">
 
-<div>
-    <h4>Book</h4>
+    @if (Model.Photo != null)
+    {
+        <img src="@Url.Action("GetImage","Books",new{gid=Model.GId})" class="img-thumbnail">
+    }
+    <div class="card-body">
+        <h3> @Html.DisplayFor(model => model.Title)</h3>
+        <p>
+            @* //3.4.2 在Display View中加入處理有換行的留言顯示方式 *@
+            @Html.Raw(Model.Description.ToString().Replace("\r\n","<br>"))
+        </p>
+    </div>
+    <div class="card-footer text-end">
+
+        @Html.DisplayFor(model => model.Author) 於
+
+        @Html.DisplayFor(model => model.TimeStamp)
+    </div>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
-    </dl>
+    <a asp-action="Index">回留言列表</a>
+
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.GId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@* //3.4.3 加入2.4所製作的VCReBooks ViewComponent顯示回覆留言資料 *@
+@await Component.InvokeAsync("VCReBooks",new {gid=Model.GId})
+
