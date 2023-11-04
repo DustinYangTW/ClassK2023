@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create 複雜繫結</h1>
+<form asp-action="Create">
+    <p>ID:<input type="text" name="ID" id="ID" /></p>
+    <p>Name:<input type="text" name="Name" id="Name" /></p>
+    <p>Price:<input type="text" name="Price" id="Price" /></p>
+    <p><input type="submit" value="新增商品" /></p>
+</form>
+<hr />
+@ViewData["Show"]

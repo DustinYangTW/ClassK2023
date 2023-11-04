@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Razor語法練習";
+}
+
+<h1>@ViewData["Title"] </h1>
+
+
+@*這裡是註解*@
+
+@*這裡是
+
+註
+解*@
+
+
+@{
+    string name = "John";
+    var name2 = "";
+    int Math = 85, Eng = 90, Chi = 95;
+
+    bool flag = true;
+
+    @:My name is @name
+
+    <h2>My name is @name</h2>
+    <span>My name is @name</span>
+}
+
+<h2>My name is @name</h2>
+
+<h1>@(Math + Eng + Chi)</h1>
+
+<h1>@Math+Eng+Chi</h1>
+
+<h1>@Math+@Eng+@Chi=@(Math + Eng + Chi)</h1>
+
+
+<h2>歡迎@name光臨</h2>
+
+<h2>歡迎 @name 光臨</h2>
+
+<h2>歡迎@(name)光臨</h2>
+<hr />
+
+@if (flag)
+{
+    <h2>您已登入本系統</h2>
+}
+else
+{
+    <h2>您的帳密有誤</h2>
+}
+
+@{
+    string[] NMname = { "瑞豐夜市", "新堀江商圈", "六合夜市", "青年夜市", "花園夜市", "大東夜市", "武聖夜市" };
+}
+<div class="col-3">
+    <ul class="list-group">
+        @foreach (var item in NMname)
+        {
+            <li class="list-group-item">@item</li>
+        }
+    </ul>
+</div>
