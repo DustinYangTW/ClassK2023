@@ -183,7 +183,7 @@ namespace MyModel_CodeFirst.Controllers
 //3.2.1 修改適合前台呈現的Index View
 //3.2.2 在Index View中加入未上傳照片的留言之顯示方式
 //3.2.3 將PostBooksController中Details Action改名為Display(View也要改名字)
-//3.2.4 在Book.cs的Model中加入TimeStamp的顯示格式
+//3.2.4 在Book.cs與ReBook.cs的Model中加入TimeStamp的顯示格式
 //3.2.5 修改Index View中Details的超鏈結為Display
 //      ※排版可以個人喜好呈現※
 

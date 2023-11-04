@@ -26,7 +26,8 @@ namespace MyModel_CodeFirst.Controllers
         }
 
         // GET: PostBooks/Details/5
-        public async Task<IActionResult> Details(long? id)
+        //3.2.3 將PostBooksController中Details Action改名為Display(View也要改名字)
+        public async Task<IActionResult> Display(long? id)
         {
             if (id == null || _context.Book == null)
             {
@@ -54,8 +55,23 @@ namespace MyModel_CodeFirst.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GId,Title,Description,Photo,ImageType,Author,TimeStamp")] Book book)
+        public async Task<IActionResult> Create(Book book, IFormFile uploadFile)
         {
+            //檔案處理
+            if (uploadFile != null)
+            {
+                if (uploadFile.ContentType == "image/jpeg" || uploadFile.ContentType == "image/png")
+                {
+                    var memoryStream=new MemoryStream();
+
+                    uploadFile.CopyTo(memoryStream);
+                    book.Photo = memoryStream.ToArray();
+                    book.ImageType = uploadFile.ContentType;
+                }
+            }
+
+            book.TimeStamp = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _context.Add(book);

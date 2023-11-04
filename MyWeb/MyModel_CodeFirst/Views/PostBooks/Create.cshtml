@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -24,24 +24,24 @@
             </div>
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
+               @*  //3.3.1 修改Create View，修改上傳檔案的元件 *@
+               @*  <input asp-for="Photo" class="form-control" /> *@
+                <input type="file" name="uploadFile" id="uploadFile" class="form-control" />
+                @* //3.3.3 加入前端效果，使照片可先預覽 *@
+               <div id="photoPreview"></div>
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageType" class="control-label"></label>
-                <input asp-for="ImageType" class="form-control" />
-                <span asp-validation-for="ImageType" class="text-danger"></span>
-            </div>
+
+            @* //3.3.4 刪除ImageType欄位 *@
+
             <div class="form-group">
                 <label asp-for="Author" class="control-label"></label>
                 <input asp-for="Author" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TimeStamp" class="control-label"></label>
-                <input asp-for="TimeStamp" class="form-control" />
-                <span asp-validation-for="TimeStamp" class="text-danger"></span>
-            </div>
+         
+            @* //3.3.5 刪除TimeStamp欄位 *@
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -55,4 +55,21 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @*//3.3.3 加入前端效果，使照片可先預覽*@
+    <script>
+        $('#uploadFile').change(function(){
+            let file=this.files[0];
+
+            let reader = new FileReader();
+
+            reader.onload = event => {
+                $('#photoPreview').html(`<img src="${event.target.result}" width="500" >`);
+            };
+
+            reader.readAsDataURL(file);
+        })
+    </script>
+
+
 }
