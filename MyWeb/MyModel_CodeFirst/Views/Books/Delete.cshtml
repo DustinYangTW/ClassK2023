@@ -8,7 +8,9 @@
 
 <h3>您確定要刪除留言嗎?</h3>
 <hr />
+@*//2.3.1 照自己喜好修改排版方式(這裡我們使用Bootstrap Card元件)*@
 <div class="card">
+    @* //2.3.3 在Delete View加入取得照片的HTML *@
     @if (Model.Photo != null)
     {
         <img src="@Url.Action("GetImage",new{gid=Model.GId})" class="img-thumbnail">
@@ -21,9 +23,9 @@
     </div>
     <div class="card-footer text-end">
 
-        @Html.DisplayFor(model => model.Author) 於
-
-        @Html.DisplayFor(model => model.TimeStamp)
+            @Html.DisplayFor(model => model.Author) 於 
+      
+            @Html.DisplayFor(model => model.TimeStamp)
     </div>
     <hr />
     <a asp-action="Index">回留言列表</a>
@@ -31,11 +33,11 @@
     <form asp-action="Delete" class="text-end alert alert-danger">
         <input type="hidden" asp-for="GId" />
         <input type="submit" value="刪除" class="btn btn-danger" onclick="return confirm('請注意!!您將會刪除該筆留言及所有回覆留言\r\n您確定要刪除留言嗎?')" />
-
+       
     </form>
 </div>
 
 
-<div>
-    @await Component.InvokeAsync("VCReBooks",new{gid = Model.GId})
+<div class="rounded shadow mt-5 p-4">
+    @await Component.InvokeAsync("VCReBooks",new {gid=Model.GId})
 </div>

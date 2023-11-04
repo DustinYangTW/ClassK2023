@@ -21,11 +21,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            @*  <th>
-            @Html.DisplayNameFor(model => model.Photo)
+           @*  <th>
+                @Html.DisplayNameFor(model => model.Photo)
             </th>
             <th>
-            @Html.DisplayNameFor(model => model.ImageType)
+                @Html.DisplayNameFor(model => model.ImageType)
             </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Author)
@@ -37,40 +37,39 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @if (item.Photo != null)
-                    {
-                        <img src=" @Url.Action("GetImage",new{gid=item.GId})" width="200">
-                    }
-                </td>
+@foreach (var item in Model) {
+        <tr>
+            <td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                @*   <td>
-            @Html.DisplayFor(modelItem => item.Photo)
+                @if(item.Photo!=null){
+                    <img src=" @Url.Action("GetImage",new{gid=item.GId})" width="200">
+                }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td class="text-truncate" style="max-width:200px">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+          @*   <td>
+                @Html.DisplayFor(modelItem => item.Photo)
             </td>
             <td>
-            @Html.DisplayFor(modelItem => item.ImageType)
+                @Html.DisplayFor(modelItem => item.ImageType)
             </td> *@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeStamp)
-                </td>
-                <td>
-                    @*    <a asp-action="Edit" asp-route-id="@item.GId">Edit</a> |
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStamp)
+            </td>
+            <td>
+             @*    <a asp-action="Edit" asp-route-id="@item.GId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.GId">Details</a> | *@
-                    <a asp-action="Delete" asp-route-id="@item.GId" class="btn btn-danger">刪除</a>
-                </td>
-            </tr>
-        }
+                <a asp-action="Delete" asp-route-id="@item.GId" class="btn btn-danger">刪除</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
