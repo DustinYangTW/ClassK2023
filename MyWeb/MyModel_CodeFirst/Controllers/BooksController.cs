@@ -39,7 +39,7 @@ namespace MyModel_CodeFirst.Controllers
             //2.2.1 改寫Index Action的內容，將留言依新到舊排序
             var bookList = await _context.Book.OrderByDescending(b => b.GId).ToListAsync();
 
-            return View();
+            return View(bookList);
         }
 
 

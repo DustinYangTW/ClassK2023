@@ -92,3 +92,71 @@ namespace MyModel_CodeFirst.Controllers
 //事實上Code First或DB First都是在開發時間在Local端做的事情
 //以Code First來說，我們只是利用它創建DB，再用已完成的DB產出DDL Script
 //※※※※※※※※※※※※
+
+
+//2. 建立留言板後台管理功能
+
+//2.1   製作自動生成的Book資料表CRUD
+//2.1.1 在Controllers資料夾上按右鍵→加入→控制器
+//2.1.2 選擇「使用EntityFramework執行檢視的MVC控制器」→按下「加入」鈕
+//2.1.3 在對話方塊中設定如下
+//      模型類別: Book(MyModel_CodeFirst.Models)
+//      資料內容類別: GuestBookContext(MyModel_CodeFirst.Models)
+//      勾選 產生檢視
+//      勾選 參考指令碼程式庫
+//      勾選 使用版面配置頁
+//      控制器名稱使用預設即可(BooksController)
+//      按下「新增」鈕
+//2.1.4 執行/Books/Index 進行測試
+//2.1.5 修改Index View將Photo及ImageType欄位、Create、Edit及Details超鏈結移除
+//2.1.6 依喜好自行修改介面
+
+
+//2.2   調整BooksController內容 
+//2.2.1 改寫Index Action的內容，將留言依新到舊排序
+//2.2.2 移除Details Action (亦可一併刪除 Details.cshtml)
+//2.2.3 移除Create Action (亦可一併刪除 Create.cshtml)
+//2.2.4 移除Edit Action (亦可一併刪除 Edit.cshtml)
+
+
+
+//2.3   修改Delete View的排版方式
+//2.3.1 照自己喜好修改排版方式(這裡我們使用Bootstrap Card元件)
+//2.3.2 在BooksController內增加讀取照片的方法
+//2.3.3 在Delete View加入取得照片的HTML
+//2.3.4 測試
+
+
+//2.4   使用「ViewComponent」技巧實作「將回覆留言內容顯示於Delete View」
+//   ※此單元將要介紹ViewComponent的使用方式※
+//2.4.1 在專案中新增ViewComponents資料夾(專案上按右鍵→加入→新增資料夾)以放置所有的ViewComponent元件檔
+//2.4.2 在ViewComponents資料夾中建立VCReBooks ViewComponent(右鍵→加入→類別→輸入檔名→新增)
+//2.4.3 VCReBooks class繼承ViewComponent(注意using Microsoft.AspNetCore.Mvc;)
+//2.4.4 撰寫InvokeAsync()方法取得回覆留言資料
+//2.4.5 在/Views/Shared裡建立Components資料夾，並在Components資料夾中建立VCReBooks資料夾
+//2.4.6 在/Views/Shared/Components/VCReBooks裡建立檢視(右鍵→加入→檢視→選擇「Razor檢視」→按下「加入」鈕)
+//2.4.7 在對話方塊中設定如下
+//      檢視名稱: Default
+//      範本:Empty(沒有模型)
+//      不勾選 建立成局部檢視
+//      不勾選 使用版面配置頁
+//   ※注意：資料夾及View的名稱不是自訂的，而是有預設的名稱，規定如下：※
+//   /Views/Shared/Components/{ComponentName}/Default.cshtml
+//   /Views/{ControllerName}/Components/{ComponentName}/Default.cshtml
+//2.4.8 在Default View上方加入@model IEnumerable<MyModel_CodeFirst.Models.ReBook>
+//2.4.9 依喜好編輯Default View排版方式
+//2.4.10 編寫Default View
+//2.4.111 測試
+
+
+//2.5   製作留言刪除功能
+//2.5.1 在Delete View中的刪除鈕上加入確認對話方塊
+//   ※注意！兩個資料表的關聯是連動的，主留言被刪除後，會一併刪除所有回覆它的留言，以符合參考完整性※
+//2.5.2 在BooksController內增加刪除回覆留言Action
+//2.5.3 在在VCReBook ViewComponent的View中(Default.cshtml)建立每則回覆留言的刪除鈕
+//2.5.4 測試
+
+
+//2.7   Layout的處理
+//2.7.1 選單的改變
+//2.7.2 主畫面(首頁)的配置
