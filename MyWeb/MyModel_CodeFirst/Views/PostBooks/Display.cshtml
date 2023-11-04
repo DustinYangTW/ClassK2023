@@ -3,19 +3,19 @@
 @{
     ViewData["Title"] = Model.Title;
 }
-
+@*修改Display View 排版樣式，排版可以個人喜好呈現*@
 <h1>@ViewData["Title"]</h1>
 
 <div class="card">
-    @* //2.3.3 在Delete View加入取得照片的HTML *@
+
     @if (Model.Photo != null)
     {
-        <img src="@Url.Action("GetImage",new{gid=Model.GId})" class="img-thumbnail">
+        <img src="@Url.Action("GetImage","Books",new{gid=Model.GId})" class="img-thumbnail">
     }
     <div class="card-body">
         <h3> @Html.DisplayFor(model => model.Title)</h3>
         <p>
-
+            @* //3.4.2 在Display View中加入處理有換行的留言顯示方式 *@
             @Html.Raw(Model.Description.ToString().Replace("\r\n","<br>"))
         </p>
     </div>
@@ -28,15 +28,46 @@
     <hr />
     <a asp-action="Index">回留言列表</a>
 
-    @* //2.5.1 在Delete View中的刪除鈕上加入確認對話方塊 *@
-    <form asp-action="Delete" class="text-end alert alert-danger">
-        <input type="hidden" asp-for="GId" />
-        <input type="submit" value="刪除" class="btn btn-danger" onclick="return confirm('請注意!!您將會刪除該筆留言及所有回覆留言\r\n您確定要刪除留言嗎?')" />
-
-    </form>
+</div>
+<div class="text-end">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ReBookModal">
+        回覆留言
+    </button>
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="ReBookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">回覆 @Model.Title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+               
+                <button type="button" class="btn btn-primary" id="btnReCreate">確定回覆</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+@* //3.4.3 加入2.4所製作的VCReBooks ViewComponent顯示回覆留言資料 *@
 @await Component.InvokeAsync("VCReBooks",new {gid=Model.GId})
 
+
+@section Scripts{
+    <script>
+        //3.5.7 在PostBooks\Display View中將RePostBooks\Create View以Ajax方式讀入
+        $('#ReBookModal .modal-body').load("/RePostBooks/Create/@(Model.GId)");
+
+        $('#btnReCreate').click(function () { 
+        
+        
+        }
+
+    </script>
+}
