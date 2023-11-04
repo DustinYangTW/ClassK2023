@@ -29,7 +29,45 @@
     <a asp-action="Index">回留言列表</a>
 
 </div>
+<div class="text-end">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ReBookModal">
+        回覆留言
+    </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ReBookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">回覆 @Model.Title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+               
+                <button type="button" class="btn btn-primary" id="btnReCreate">確定回覆</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @* //3.4.3 加入2.4所製作的VCReBooks ViewComponent顯示回覆留言資料 *@
 @await Component.InvokeAsync("VCReBooks",new {gid=Model.GId})
 
+
+@section Scripts{
+    <script>
+        //3.5.7 在PostBooks\Display View中將RePostBooks\Create View以Ajax方式讀入
+        $('#ReBookModal .modal-body').load("/RePostBooks/Create/@(Model.GId)");
+
+        $('#btnReCreate').click(function () { 
+        
+        
+        }
+
+    </script>
+}
