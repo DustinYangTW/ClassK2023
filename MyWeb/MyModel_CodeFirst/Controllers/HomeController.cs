@@ -59,9 +59,36 @@ namespace MyModel_CodeFirst.Controllers
 //      ※注意程式的位置必須要在var builder = WebApplication.CreateBuilder(args);這句之後
 //1.2.5 在套件管理器主控台(檢視 > 其他視窗 > 套件管理器主控台)下指令
 //      (1)Add-Migration InitialCreate
-//      (2)Upeate-database
+//      (2)Update-database
 //      ※第(1)項的「InitialCreate﹞是自訂的名稱，若執行成功會看到「Build succeeded.」※
 //      ※另外會看到一個Migrations的資料夾及其檔案被建立在專案中，裡面紀錄著Migration的歷程※
 //      ※若第(1)項指令執行成功才能執行第(2)項指令※
 //      (3)至SSMS中查看是否有成功建立資料庫及資料表(目前資料表內沒有資料)
 //      (4)先將資料庫刪除，並將專案中Migrations資料夾及內含檔案整個刪除
+
+
+//1.3   創建Initializer物件建立初始(種子)資料(Seed Data)
+//      ※※※我們可以在創建資料庫時就創建幾筆初始的資料在裡面以供開發時測試之用※※※
+
+//1.3.1 在Models資料夾上按右鍵→加入→類別，檔名取名為SeedData.cs，按下「新增」鈕
+//1.3.2 撰寫SeedData類別的內容
+//      (1)撰寫靜態方法 Initialize(IServiceProvider serviceProvider)
+//      (2)撰寫Book及ReBook資料表內的初始資料程式
+//      (3)撰寫getFileBytes，功能為將照片轉成二進位資料
+//1.3.3 在Program.cs撰寫啟用Initializer的程式(要寫在var app = builder.Build();之後)
+//      ※這個Initializer的作用是建立一些初始資料在資料庫中以利測試，所以不一定要有Initializer※
+//      ※注意:初始資料的照片放在SeedSourcePhoto資料夾中※
+//1.3.4 建置專案，確定專案完全建置成功
+//1.3.5 再次於套件管理器主控台(檢視 > 其他視窗 > 套件管理器主控台)下指令
+//      (1)Add-Migration InitialCreate
+//      (2)Update-database
+//1.3.4 至SSMS中查看是否有成功建立資料庫及資料表(目前資料表內沒有資料)
+//1.3.5 在瀏覽器上執行網站首頁以建立初始資料(若沒有執行過網站，初始資料不會被建立)
+//1.3.6 再次至SSMS中查看資料表內是否有資料
+
+//※※※※※※※※※※※※
+//到這裡為止即是Model與DB皆定稿並實作完成
+//有些人會很納悶，在實際開發時，我要如何用Code First來建立資料庫？因為我可能沒有資料庫的權限啊！
+//事實上Code First或DB First都是在開發時間在Local端做的事情
+//以Code First來說，我們只是利用它創建DB，再用已完成的DB產出DDL Script
+//※※※※※※※※※※※※

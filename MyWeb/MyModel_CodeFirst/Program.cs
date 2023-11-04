@@ -3,14 +3,28 @@ using MyModel_CodeFirst.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-//Program.cs加入使用appsettings.json中的連線字串程式碼(這段必須寫法var builder這行後面)
+//1.2.4 在Program.cs內以依賴注入的寫法撰寫讀取連線字串的物件
 builder.Services.AddDbContext<GuestBookContext>(options =>
-   options.UseSqlServer(builder.Configuration.GetConnectionString("GuestBookConnection"))
+options.UseSqlServer(builder.Configuration.GetConnectionString("GuestBookConnection"))
 );
 
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
+
+//1.3.3 在Program.cs撰寫啟用Initializer的程式
+//*****(要寫在var app = builder.Build();之後)******
+//*****都是固定寫法*****
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    SeedData.Initialize(service);
+}
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
