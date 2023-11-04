@@ -14,6 +14,17 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+//1.3.3 在Program.cs撰寫啟用Initializer的程式
+//*****(要寫在var app = builder.Build();之後)******
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider;
+    SeedData.Initialize(service);
+}
+
+
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

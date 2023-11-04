@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MyModel_CodeFirst.Models.Book>
+
+@{
+    ViewData["Title"] = "商城留言板";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-lg btn-success">我要留言</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card mb-4">
+        @if (item.Photo != null)
+        {
+            <img src="@Url.Action("GetImage","Books",new{gid=item.GId})" class="img-thumbnail">
+        }
+        <div class="card-body">
+            <h3> @Html.DisplayFor(model => item.Title)</h3>
+            <p>
+                @* //3.3.7 在Index View中加入處理有換行的留言顯示方式 *@
+               @*  @Html.DisplayFor(model => item.Description) *@
+                @Html.Raw(item.Description.ToString().Replace("\r\n","<br>"))
+            </p>
+        </div>
+        <div class="card-footer text-end">
+
+            @Html.DisplayFor(model => item.Author) 於
+
+            @Html.DisplayFor(model => item.TimeStamp) | 
+
+            @* //3.2.5 修改Index View中Details的超鏈結為Display *@
+            <a asp-action="Display" asp-route-id="@item.GId">看更多...</a>
+        </div>
+
+    </div>
+}
+

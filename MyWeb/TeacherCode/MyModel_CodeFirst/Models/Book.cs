@@ -31,7 +31,9 @@ namespace MyModel_CodeFirst.Models
         [StringLength(20, ErrorMessage = "姓名不可大於20個字")]
         public string Author { get; set; }
 
+        //3.2.4 在Book.cs與ReBook.cs的Model中加入TimeStamp的顯示格式
         [Display(Name = "留言時間")]
+        [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd hh:mm}")]
         public DateTime TimeStamp { get; set; }
 
         //1.1.5 撰寫兩個類別間的關聯屬性做為未來資料表之間的關聯
