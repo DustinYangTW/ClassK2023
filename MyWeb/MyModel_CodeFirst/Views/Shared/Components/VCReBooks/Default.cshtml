@@ -8,12 +8,17 @@
 {
     @foreach (var item in Model)
     {
-        <div>
-            <h5>@Html.DisplayFor(modelItem => item.Description)</h5>
+        <div class="rounded shadow mt-5 p-4">
+            <div>
+                <h5>@Html.DisplayFor(modelItem => item.Description)</h5>
 
-            <p class="text-end">
-                @Html.DisplayFor(modelItem => item.Author) 於 @Html.DisplayFor(modelItem => item.TimeStamp)
-            </p>
+                <p class="text-end">
+                    @Html.DisplayFor(modelItem => item.Author) 於 @Html.DisplayFor(modelItem => item.TimeStamp)
+                </p>
+                <p class="text-end">
+                    <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.KId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
+                </p>
+            </div>
         </div>
         <hr />
     }

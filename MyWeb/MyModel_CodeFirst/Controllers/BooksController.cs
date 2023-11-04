@@ -80,6 +80,29 @@ namespace MyModel_CodeFirst.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        //2.5.2 在BooksController內增加刪除回覆留言Action
+        public async Task<IActionResult> DeleteRebook(long id)
+        {
+            if (_context.Book == null)
+            {
+                return Problem("這裡有一些些小問題發生哦....");
+            }
+
+            var reBook = await _context.ReBook.FindAsync(id);
+            if (reBook != null)
+            {
+                _context.ReBook.Remove(reBook);
+            }
+
+            await _context.SaveChangesAsync();  //delete from rebook where RId=@id
+
+            return RedirectToAction("Delete", new { id = reBook.GId });
+        }
+
+
+
+
         private bool BookExists(long id)
         {
             return _context.Book.Any(e => e.GId == id);
