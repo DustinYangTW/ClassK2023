@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MyModel_CodeFirst.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@foreach (var item in Model)
+{
+    <div class="card">
+        @if (item.Photo != null)
+        {
+            <img src="@Url.Action("GetImage","Books",new{gid=item.GId})" class="img-thumbnail">
+        }
+        <div class="card-body">
+            <h3> @Html.DisplayFor(model => item.Title)</h3>
+            <p>
+                @Html.DisplayFor(model => item.Description)
+            </p>
+        </div>
+        <div class="card-footer text-end">
+
+            @Html.DisplayFor(model => item.Author) 於
+
+            @Html.DisplayFor(model => item.TimeStamp) | 
+
+            @* //3.2.5 修改Index View中Details的超鏈結為Display *@
+            <a asp-action="Display" asp-route-id="@item.GId">看更多...</a>
+        </div>
+
+    </div>
+}
+

@@ -18,6 +18,7 @@ namespace MyModel_CodeFirst.Models
         public string? Author { get; set; }
 
         [Display(Name = "留言時間")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}")]
         public DateTime TimeStamp { get; set; }
 
         //沒有這樣做會導致關聯拉不上
