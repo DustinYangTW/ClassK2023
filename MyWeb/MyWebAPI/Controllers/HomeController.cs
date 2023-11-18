@@ -70,3 +70,44 @@ namespace MyWebAPI.Controllers
 //      ※因此這裡的操作目的是熟悉Swagger的用法，以利Web API在開發時能使用它來進行測試※
 
 
+//3     製作tStudent資料CRUD 的 Restful API(Web API)
+
+//3.1   建立Department API Ccontroller 
+//3.1.1 在Controllers資料夾上按右鍵→加入→控制器
+//3.1.2 左側選單點選「API」→ 中間主選單選擇「使用Entity Framework執行動作的API控制器」→按下「加入」鈕
+//3.1.3 在對話方塊中設定如下
+//      模型類別: Department(MyWebAPI.Models)
+//      資料內容類別: dbStudentsContext(MyWebAPI.Models)
+//      控制器名稱使用預設即可(DepartmentsController)
+//      按下「新增」鈕
+
+
+//3.2   建立tStuden API Ccontroller 
+//3.2.1 在Controllers資料夾上按右鍵→加入→控制器
+//3.2.2 左側選單點選「API」→ 中間主選單選擇「使用Entity Framework執行動作的API控制器」→按下「加入」鈕
+//3.2.3 在對話方塊中設定如下
+//      模型類別: tStudent(MyWebAPI.Models)
+//      資料內容類別: dbStudentsContext(MyWebAPI.Models)
+//      控制器名稱使用預設即可(tStudentsController)
+//      按下「新增」鈕
+//3.2.4 使用Swagger Tool分別對DepartmentsController及tStudentsController API進行操作測試
+
+
+////////////////////這條是前後端工程師分隔線////////////////////////////////
+
+//3.3   製作顯示學生資料列表的頁面
+//3.3.1 修改GettStudent Action
+//3.3.2 在網站根目錄wwwroot內新增html網頁Student.html
+//3.3.3 載入Bootstrap CSS及icon用的CSS
+//3.3.4 載入jQuery函式庫及Bootstrap的JS主程式
+//3.3.5 依自己的喜好編輯UI並利用Bootstrap進行網頁切版
+//      ※請使用課程中所教過的HTML、CSS、Bootstrap進行網頁畫面的編輯※ 
+//      ※這是純前端的HTML網頁，無法使用Razor及Tag Helper※ 
+//3.3.6 撰寫讀取Department資料的程式，並操作DOM來進行左側選單的安排
+//3.3.7 撰寫讀取tStudent資料的程式，並操作DOM來進行學生資料列表的呈現
+//3.3.8 測試是否能正常顯示
+//      ※學生資料需以所選的科系來進行顯示，預設顯示第一個科系的學生資料※
+//      ※由於全部都是純前端的程式，因此所有動作都得撰寫相對應行為的程式※
+//      ※這裡會有相當多的連動，因此很多動作需透過參數的傳遞才能完成※
+//      ※在各項功能逐建被建立的過程，撰寫程式時將會發現時不時會出現原本不存在的Bug，因此會不斷要修正※
+//      ※請多看幾次影片講解，才能記住並建立應有概念※
