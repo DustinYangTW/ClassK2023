@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@{
+    //4.3.4 在_Layout.cshtml加入未登入則將網頁自動導往/Home/Index的判斷式
+    var manager = Context.Session.GetString("Manager");
+    if (manager == null)
+    {
+        Context.Response.Redirect("/Home/Index");
+    }
+
+}
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
