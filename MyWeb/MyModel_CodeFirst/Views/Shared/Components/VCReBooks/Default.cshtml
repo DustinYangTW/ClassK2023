@@ -31,7 +31,7 @@ else
                 @if (manager != null)
                 {
                     <p class="text-end">
-                        <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.RId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
+                        <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.KId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
                 </p>
                 }
             </div>

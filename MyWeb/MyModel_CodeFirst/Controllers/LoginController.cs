@@ -44,5 +44,11 @@ namespace MyModel_CodeFirst.Controllers
 
             return RedirectToAction("Index", "Books");
         }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("Manager");
+            return RedirectToAction("Login", "Login");
+        }
     }
 }
