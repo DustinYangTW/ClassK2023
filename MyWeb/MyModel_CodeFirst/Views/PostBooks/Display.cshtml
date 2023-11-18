@@ -64,10 +64,33 @@
         //3.5.7 在PostBooks\Display View中將RePostBooks\Create View以Ajax方式讀入
         $('#ReBookModal .modal-body').load("/RePostBooks/Create/@(Model.GId)");
 
-        $('#btnReCreate').click(function () { 
-        
-        
-        }
+
+        const myModal = new bootstrap.Modal(document.getElementById('ReBookModal'));
+
+
+        $('#btnReCreate').click(function () {
+
+            if ($('#Description').val() == "" || $('#Author').val()=="") {
+                alert("兩個欄位都必須填寫");
+                return;
+
+            }
+
+            console.log($('#ReForm').serialize());  //將表單資料序列化
+
+            $.ajax({
+                type:'Post',
+                url: '@Url.Action("Create","RePostBooks")',
+                data: $('#ReForm').serialize()
+            });
+
+            $('#Description').val('');
+            $('#Author').val('');
+            myModal.hide();//把Modal視窗關閉
+
+
+
+        })
 
     </script>
 }

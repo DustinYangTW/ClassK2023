@@ -37,14 +37,25 @@ namespace MyModel_CodeFirst.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RId,Description,Author,TimeStamp,GId")] ReBook reBook)
         {
+            //3.5.9 修改RePostBooksController中的Create Action，使其可處理JSON資料
+
+            reBook.TimeStamp = DateTime.Now;
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(reBook);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return Json(reBook);
+                //return RedirectToAction(nameof(Index));
             }
-            ViewData["GId"] = new SelectList(_context.Book, "GId", "Author", reBook.GId);
-            return View(reBook);
+
+
+            ViewData["GId"] = reBook.GId;
+
+            return Json(reBook);
+            //return View(reBook);
         }
 
         
