@@ -21,18 +21,18 @@ namespace MyWebAPI.Controllers
         }
 
         // GET: api/tStudents
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<tStudent>>> GettStudent()
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<tStudent>>> GettStudents(string id)
         {
           if (_context.tStudent == null)
           {
               return NotFound();
           }
-            return await _context.tStudent.ToListAsync();
+            return await _context.tStudent.Where(s=>s.DeptID==id).ToListAsync();
         }
 
-        // GET: api/tStudents/5
-        [HttpGet("{id}")]
+        // GET: api/tStudents/Student/112003
+        [HttpGet("Student/{id}")]
         public async Task<ActionResult<tStudent>> GettStudent(string id)
         {
           if (_context.tStudent == null)
