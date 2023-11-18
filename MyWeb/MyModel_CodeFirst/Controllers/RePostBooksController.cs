@@ -50,7 +50,7 @@ namespace MyModel_CodeFirst.Controllers
 
                 var data = new
                 {
-                    rid = reBook.RId,
+                    rid = reBook.KId,
                     author = reBook.Author,
                     description = reBook.Description,
                     Timestamp = reBook.TimeStamp,
