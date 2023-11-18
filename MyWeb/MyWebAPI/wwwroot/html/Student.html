@@ -115,6 +115,23 @@
 
         getStudentsList("01", "資工系");
 
+
+        function delStudent(id, deptId) {
+            let result = confirm('確定要刪除嗎?');
+            if (result) {
+                $.ajax({
+                    type:"Delete",
+                    url:`/api/tStudents/${id}`,
+                    success: function () {
+                        //更新學生資料列表
+                        getStudentsList(deptId, $('#student h3>.text-danger').text());
+                    }
+                })
+            }
+
+
+        }
+
         function enableTooltip() {
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));

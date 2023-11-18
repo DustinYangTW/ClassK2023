@@ -28,7 +28,15 @@ namespace MyWebAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.tStudent.Where(s=>s.DeptID==id).ToListAsync();
+            var stu= await _context.tStudent.Where(s=>s.DeptID==id).Select(s=>new { 
+                fStuId=s.fStuId, 
+                fName=s.fName,
+                fEmail=s.fEmail==null?"":s.fEmail,
+                fScore=s.fScore.ToString()==null?"":s.fScore.ToString(),
+                deptID=s.DeptID
+            }).ToListAsync();
+
+            return Ok(stu);
         }
 
         // GET: api/tStudents/Student/112003
