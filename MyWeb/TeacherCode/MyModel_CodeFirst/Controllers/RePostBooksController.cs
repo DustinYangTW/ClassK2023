@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyModel_CodeFirst.Models;
+using NuGet.Packaging.Signing;
 
 namespace MyModel_CodeFirst.Controllers
 {
@@ -37,14 +38,36 @@ namespace MyModel_CodeFirst.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RId,Description,Author,TimeStamp,GId")] ReBook reBook)
         {
+            //3.5.9 修改RePostBooksController中的Create Action，使其可處理JSON資料
+
+            reBook.TimeStamp = DateTime.Now;
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(reBook);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                //3.5.9 修改RePostBooksController中的Create Action，使其可處理JSON資料
+                var data = new
+                {
+                    rid = reBook.RId,
+                    author = reBook.Author,
+                    description = reBook.Description,
+                    timestamp = reBook.TimeStamp.ToString("yyyy/MM/dd HH:mm"),
+                    gid = reBook.GId
+                };
+
+
+                return Json(data);
+                //return RedirectToAction(nameof(Index));
             }
-            ViewData["GId"] = new SelectList(_context.Book, "GId", "Author", reBook.GId);
-            return View(reBook);
+
+
+            ViewData["GId"] = reBook.GId;
+
+            return Json(reBook);
+            //return View(reBook);
         }
 
         

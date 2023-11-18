@@ -4,12 +4,13 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
+
 
 
 <div class="row">
     <div class="col-10">
-        <form asp-action="Create">
+        @* //3.5.10 修改RePostBooks\Create View中<form>裡的屬性 *@
+        <form asp-action="Create" id="ReForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>

@@ -2,29 +2,41 @@
 
 @{
     Layout = null;
+    var manager = Context.Session.GetString("Manager");
 }
-
-@if (Model.Count() != 0)
+@*//2.4.9 依喜好編輯Default View排版方式*@
+<div id="RebookArea">
+    <h4 class="text-center">回覆留言</h4>
+@if (Model.Count() == 0)
 {
-    <div class="rounded shadow mt-5 p-4">
-        <h4 class="text-center">回覆留言</h4>
+        <div class="text-end alert alert-primary">目前無任何回覆</div>
+}
+else
+{
+
         @foreach (var item in Model)
         {
-            <div>
-                <h5>@* @Html.DisplayFor(modelItem => item.Description) *@
+            //3.4.4 VCReBooks ViewComponent的View中加入處理有換行的回覆留言顯示方式
+            <div class="rounded shadow mt-5 p-4">
+                <h5>
+                    @* @Html.DisplayFor(modelItem => item.Description) *@
                     @Html.Raw(item.Description.ToString().Replace("\r\n","<br>"))
                 </h5>
 
                 <p class="text-end">
                     @Html.DisplayFor(modelItem => item.Author) 於 @Html.DisplayFor(modelItem => item.TimeStamp)
                 </p>
-                <p class="text-end">
-                    <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.RId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
+                @*//2.5.3 在在VCReBook ViewComponent的View中(Default.cshtml)建立每則回覆留言的刪除鈕*@
+                @* //4.2.9 在VCReBooks View Component中加入未登入看不到刪除鈕的判斷式 *@
+                @if (manager != null)
+                {
+                    <p class="text-end">
+                        <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.RId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
                 </p>
+                }
             </div>
-            <hr />
+
         }
-    </div>
+ 
 }
-
-
+</div>

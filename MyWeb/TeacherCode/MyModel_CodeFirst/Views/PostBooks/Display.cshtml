@@ -1,6 +1,7 @@
 ﻿@model MyModel_CodeFirst.Models.Book
 
 @{
+
     ViewData["Title"] = Model.Title;
 }
 @*修改Display View 排版樣式，排版可以個人喜好呈現*@
@@ -48,14 +49,15 @@
                 ...
             </div>
             <div class="modal-footer">
-               
+
                 <button type="button" class="btn btn-primary" id="btnReCreate">確定回覆</button>
             </div>
         </div>
     </div>
 </div>
-
+<hr />
 @* //3.4.3 加入2.4所製作的VCReBooks ViewComponent顯示回覆留言資料 *@
+
 @await Component.InvokeAsync("VCReBooks",new {gid=Model.GId})
 
 
@@ -64,10 +66,51 @@
         //3.5.7 在PostBooks\Display View中將RePostBooks\Create View以Ajax方式讀入
         $('#ReBookModal .modal-body').load("/RePostBooks/Create/@(Model.GId)");
 
-        $('#btnReCreate').click(function () { 
-        
-        
-        }
+
+        const myModal = new bootstrap.Modal(document.getElementById('ReBookModal'));
+
+        //3.5.11 在PostBooks\Display View中撰寫相關的JavaScript程式
+        $('#btnReCreate').click(function () {
+
+            if ($('#Description').val() == "" || $('#Author').val() == "") {
+                alert("兩個欄位都必須填寫");
+                return;
+
+            }
+
+            console.log($('#ReForm').serialize());  //將表單資料序列化
+
+            $.ajax({
+                type: 'Post',
+                url: '@Url.Action("Create","RePostBooks")',
+                data: $('#ReForm').serialize(),
+                success: function (data) {
+                    console.log(data);
+
+                    var reBookData = `
+                                     <div class="rounded shadow mt-5 p-4">
+                                            <h5>${data.description}</h5>
+
+                                            <p class="text-end">
+                                                  ${data.author} 於 ${data.timestamp}
+                                            </p>
+
+                                        </div>
+
+                            `;
+
+                    $('#RebookArea>h4').after(reBookData);
+                    
+                }
+            });
+
+            $('#Description').val('');
+            $('#Author').val('');
+            myModal.hide();//把Modal視窗關閉
+
+
+
+        })
 
     </script>
 }

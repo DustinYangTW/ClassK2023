@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<MyModel_CodeFirst.Models.Book>
 
 @{
+    //4.3.3 將/Views/Books裡所有View的Layout指定為_Layout.cshtml(後台用的Layout)
+    Layout = "_Layout";
     ViewData["Title"] = "留言板管理";
 }
 @*//2.1.5 修改Index View將Photo及ImageType欄位、Create、Edit及Details超鏈結移除*@

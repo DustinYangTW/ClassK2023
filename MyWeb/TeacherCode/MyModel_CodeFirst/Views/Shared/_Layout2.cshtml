@@ -1,12 +1,5 @@
-﻿@{
-    //4.3.4 在_Layout.cshtml加入未登入則將網頁自動導往/Home/Index的判斷式
-    var manager = Context.Session.GetString("Manager");
-    if (manager == null)
-    {
-        Context.Response.Redirect("/Home/Index");
-    }
+﻿
 
-}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,25 +22,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Books" asp-action="Index">留言版管理</a>
+                            <a class="nav-link" asp-area="" asp-controller="PostBooks" asp-action="Index">留言版</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">訂單管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">商品管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">關於我們</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">隱私政策</a>
-                        </li>
+                      
                     </ul>
-                    @* //4.4.2 在_Layout.cshtml加入登出後台的按鈕 *@
-                    <div>
-                        <a class="btn btn-outline-light ml-auto" asp-area="" asp-controller="Login" asp-action="Logout">登出</a>
-                    </div>
                 </div>
             </div>
         </nav>
