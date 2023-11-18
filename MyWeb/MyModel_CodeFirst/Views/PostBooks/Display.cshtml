@@ -81,7 +81,25 @@
             $.ajax({
                 type:'Post',
                 url: '@Url.Action("Create","RePostBooks")',
-                data: $('#ReForm').serialize()
+                data: $('#ReForm').serialize(),
+                success:function(data){
+                    console.log(data);
+
+                    var reBookData = `
+                                <div>
+                                    <h5>${data.description}</h5>
+
+                                    <p class="text-end">
+                                                 ${data.author} 於 ${data.Timestamp}
+                                    </p>
+                       
+                                </div>
+                                <hr />
+                    
+                    `;
+
+                    $('#RebookArea').prepend(reBookData);
+                }
             });
 
             $('#Description').val('');

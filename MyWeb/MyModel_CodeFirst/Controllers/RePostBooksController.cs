@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyModel_CodeFirst.Models;
+using NuGet.Packaging.Signing;
 
 namespace MyModel_CodeFirst.Controllers
 {
@@ -47,7 +48,17 @@ namespace MyModel_CodeFirst.Controllers
                 _context.Add(reBook);
                 await _context.SaveChangesAsync();
 
-                return Json(reBook);
+                var data = new
+                {
+                    rid = reBook.RId,
+                    author = reBook.Author,
+                    description = reBook.Description,
+                    Timestamp = reBook.TimeStamp,
+                    gid = reBook.GId
+                };
+
+
+                return Json(data);
                 //return RedirectToAction(nameof(Index));
             }
 

@@ -226,7 +226,8 @@ namespace MyModel_CodeFirst.Controllers
 //3.5.9 修改RePostBooksController中的Create Action，使其可處理JSON資料
 //3.5.10 修改RePostBooks\Create View中<form>裡的屬性
 //3.5.11 在PostBooks\Display View中撰寫相關的JavaScript程式
-//3.5.12 測試效果
+//3.5.12 自行安排合適的回覆留言顯示方式
+//3.5.13 測試效果
 
 
 

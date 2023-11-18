@@ -4,25 +4,31 @@
     Layout = null;
 }
 
-@if (Model.Count() != 0)
+<h4 class="text-center">回覆留言</h4>
+@if (Model.Count() == 0)
 {
-    @foreach (var item in Model)
-    {
-        <div class="rounded shadow mt-5 p-4">
+    <div class="alert alert-info text-center">目前尚無任何回覆</div>
+}
+else
+{
+    <div class="rounded shadow mt-5 p-4" id="RebookArea">
+        @foreach (var item in Model)
+        {
             <div>
-                <h5>@Html.DisplayFor(modelItem => item.Description)</h5>
+                <h5>@* @Html.DisplayFor(modelItem => item.Description) *@
+                    @Html.Raw(item.Description.ToString().Replace("\r\n","<br>"))
+                </h5>
 
                 <p class="text-end">
                     @Html.DisplayFor(modelItem => item.Author) 於 @Html.DisplayFor(modelItem => item.TimeStamp)
                 </p>
                 <p class="text-end">
-                    <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.KId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
+                    <a asp-action="DeleteReBook" asp-controller="Books" asp-route-id="@item.RId" class="btn btn-outline-danger" onclick="return confirm('您確定刪除嗎?')">刪除</a>
                 </p>
             </div>
-        </div>
-        <hr />
-    }
-
+            <hr />
+        }
+    </div>
 }
 
 
