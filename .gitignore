@@ -276,3 +276,6 @@
 /MyWeb/MyModel_CodeFirst/bin/Debug/net6.0/System.Composition.Runtime.dll
 /MyWeb/MyModel_CodeFirst/bin/Debug/net6.0/System.Composition.TypedParts.dll
 /MyWeb/MyModel_CodeFirst/bin/Debug/net6.0/System.Reflection.MetadataLoadContext.dll
+/MyWeb/MyModel_CodeFirst/obj/Debug/net6.0/scopedcss/bundle/MyModel_CodeFirst.styles.css
+/MyWeb/MyModel_CodeFirst/obj/Debug/net6.0/scopedcss/projectbundle/MyModel_CodeFirst.bundle.scp.css
+*.css
